@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:aprelayadmin}",
+            "name": "Debug aprelayadmin",
+            "target": "aprelayadmin",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug aprelayadmin"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:aprelayadmin}",
+            "name": "Release aprelayadmin",
+            "target": "aprelayadmin",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release aprelayadmin"
+        }
+    ]
+}
