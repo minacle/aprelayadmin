@@ -1,12 +1,8 @@
+import Observation
 import RetortTUI
 
-#if canImport(Combine)
-import Combine
-#else
-import OpenCombine
-#endif
-
-final class GlobalState: ObservableObject {
+@Observable
+final class GlobalState {
 
     enum ViewType {
 
@@ -27,12 +23,9 @@ final class GlobalState: ObservableObject {
         case settings
     }
 
-    @Published
     var adminToken: String = ""
 
-    @Published
     var currentView: ViewType = .root
 
-    @Published
     var relayURL: String = ""
 }

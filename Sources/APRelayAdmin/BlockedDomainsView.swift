@@ -3,7 +3,7 @@ import RetortTUI
 
 struct BlockedDomainsView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: -
@@ -221,7 +221,7 @@ struct BlockedDomainsView: View {
 
 struct AddBlockedDomainView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: -

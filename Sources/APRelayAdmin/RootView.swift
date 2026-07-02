@@ -2,7 +2,7 @@ import RetortTUI
 
 struct RootView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: -

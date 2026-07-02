@@ -2,7 +2,7 @@ import RetortTUI
 
 struct SubscribersView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: -
@@ -62,7 +62,7 @@ struct SubscribersView: View {
 
 struct PendingSubscribersView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: View
@@ -79,7 +79,7 @@ struct PendingSubscribersView: View {
 
 struct AcceptedSubscribersView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: View
@@ -96,7 +96,7 @@ struct AcceptedSubscribersView: View {
 
 struct RejectedSubscribersView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     // MARK: View
@@ -113,7 +113,7 @@ struct RejectedSubscribersView: View {
 
 private struct SubscriberListView: View {
 
-    @ObservedObject
+    @Bindable
     var globalState: GlobalState
 
     let state: AdminAPIClient.SubscriberState

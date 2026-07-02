@@ -6,7 +6,7 @@ struct AppView: View {
     @Environment(\.terminate)
     private var terminate
 
-    @StateObject
+    @Bindable
     private var globalState = GlobalState()
 
     // MARK: View
