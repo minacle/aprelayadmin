@@ -30,9 +30,9 @@ struct SettingsView: View {
             }
             Group {
                 RetortList(selection: $focusedItem, editing: $editingItem) {
-                    RetortListItem(id: .adminToken, title: "Admin Token")
+                    RetortListItem(id: .adminToken, role: .button, title: "Admin Token")
                     .editor($globalState.adminToken)
-                    RetortListItem(id: .relayURL, title: "Relay URL")
+                    RetortListItem(id: .relayURL, role: .button, title: "Relay URL")
                     .editor($globalState.relayURL)
                 }
                 Spacer()
@@ -49,10 +49,6 @@ struct SettingsView: View {
                 }
                 Spacer()
             }
-        }
-        .onGlobalKeyPress(.escape) {
-            globalState.currentView = .root
-            return .handled
         }
     }
 }

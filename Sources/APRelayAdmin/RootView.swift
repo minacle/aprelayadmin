@@ -29,17 +29,14 @@ struct RootView: View {
             }
             Group {
                 RetortList(selection: $focusedItem) {
-                    RetortListItem(id: .subscribers, title: "Subscribers")
-                    .onActivate {
-                        globalState.currentView = .subscribers
+                    RetortListItem(id: .subscribers, role: .navigationLink, title: "Subscribers") {
+                        SubscribersView(globalState: globalState)
                     }
-                    RetortListItem(id: .blockedDomains, title: "Blocked Domains")
-                    .onActivate {
-                        globalState.currentView = .blockedDomains
+                    RetortListItem(id: .blockedDomains, role: .navigationLink, title: "Blocked Domains") {
+                        BlockedDomainsView(globalState: globalState)
                     }
-                    RetortListItem(id: .settings, title: "Settings")
-                    .onActivate {
-                        globalState.currentView = .settings
+                    RetortListItem(id: .settings, role: .navigationLink, title: "Settings") {
+                        SettingsView(globalState: globalState)
                     }
                 }
                 Spacer()

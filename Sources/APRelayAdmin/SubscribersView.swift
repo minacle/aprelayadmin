@@ -30,17 +30,14 @@ struct SubscribersView: View {
             Group {
                 VStack {
                     RetortList(selection: $focusedItem) {
-                        RetortListItem(id: .pending, title: "Pending")
-                        .onActivate {
-                            globalState.currentView = .pendingSubscribers
+                        RetortListItem(id: .pending, role: .navigationLink, title: "Pending") {
+                            PendingSubscribersView(globalState: globalState)
                         }
-                        RetortListItem(id: .accepted, title: "Accepted")
-                        .onActivate {
-                            globalState.currentView = .acceptedSubscribers
+                        RetortListItem(id: .accepted, role: .navigationLink, title: "Accepted") {
+                            AcceptedSubscribersView(globalState: globalState)
                         }
-                        RetortListItem(id: .rejected, title: "Rejected")
-                        .onActivate {
-                            globalState.currentView = .rejectedSubscribers
+                        RetortListItem(id: .rejected, role: .navigationLink, title: "Rejected") {
+                            RejectedSubscribersView(globalState: globalState)
                         }
                     }
                 }
@@ -52,10 +49,6 @@ struct SubscribersView: View {
                 keyHint(for: "⎋", description: "back")
                 Spacer()
             }
-        }
-        .onGlobalKeyPress(.escape) {
-            globalState.currentView = .root
-            return .handled
         }
     }
 }
@@ -217,7 +210,7 @@ private struct SubscriberListView: View {
                 else {
                     RetortList(selection: $focusedItem, editing: $editingItem) {
                         for index in subscribers.indices {
-                            RetortListItem(id: .subscriber(index), title: subscribers[index].domain)
+                            RetortListItem(id: .subscriber(index), role: .button, title: subscribers[index].domain)
                             .choices(
                                 .constant(defaultAction),
                                 from: availableActions,
@@ -276,10 +269,6 @@ private struct SubscriberListView: View {
         }
         .onAppear {
             refresh()
-        }
-        .onGlobalKeyPress(.escape) {
-            globalState.currentView = .subscribers
-            return .handled
         }
     }
 

@@ -25,6 +25,9 @@ struct BlockedDomainsView: View {
         }
     }
 
+    @Environment(\.push)
+    private var push
+
     @FocusState
     private var focusedItem: FocusedItem?
 
@@ -93,7 +96,7 @@ struct BlockedDomainsView: View {
                 else {
                     RetortList(selection: $focusedItem, editing: $editingItem) {
                         for index in blockedDomains.indices {
-                            RetortListItem(id: .blockedDomain(index), title: blockedDomains[index].domain)
+                            RetortListItem(id: .blockedDomain(index), role: .button, title: blockedDomains[index].domain)
                             .choices(
                                 .constant(.unblock),
                                 from: Action.allCases,
@@ -145,10 +148,15 @@ struct BlockedDomainsView: View {
                 Spacer()
             }
         }
+        .onAppear {
+            refresh()
+        }
         .onGlobalKeyPress(characters: .init(charactersIn: "a")) {
             (_) in
             if editingItem == nil {
-                globalState.currentView = .addBlockedDomain
+                push {
+                    AddBlockedDomainView(globalState: globalState)
+                }
                 return .handled
             }
             return .ignored
@@ -160,13 +168,6 @@ struct BlockedDomainsView: View {
                 return .handled
             }
             return .ignored
-        }
-        .onAppear {
-            refresh()
-        }
-        .onGlobalKeyPress(.escape) {
-            globalState.currentView = .root
-            return .handled
         }
     }
 
@@ -235,6 +236,9 @@ struct AddBlockedDomainView: View {
         case block
     }
 
+    @Environment(\.pop)
+    private var pop
+
     @FocusState
     private var focusedItem: FocusedItem? = .domain
 
@@ -263,17 +267,17 @@ struct AddBlockedDomainView: View {
                     message(errorMessage)
                 }
                 RetortList(selection: $focusedItem, editing: $editingItem) {
-                    RetortListItem(id: .domain, title: "Domain")
+                    RetortListItem(id: .domain, role: .button, title: "Domain")
                     .editor($domain)
                     .leadingAccessory {
                         validityAccessory(isDomainValid)
                     }
-                    RetortListItem(id: .reason, title: "Reason")
+                    RetortListItem(id: .reason, role: .button, title: "Reason")
                     .editor($reason)
                     .leadingAccessory {
                         validityAccessory(isReasonValid)
                     }
-                    RetortListItem(id: .block, title: "Block")
+                    RetortListItem(id: .block, role: .button, title: "Block")
                     .onActivate {
                         block()
                     }
@@ -292,16 +296,6 @@ struct AddBlockedDomainView: View {
                 }
                 Spacer()
             }
-        }
-        .onAppear {
-            focusedItem = .domain
-            domain = ""
-            reason = ""
-            errorMessage = nil
-        }
-        .onGlobalKeyPress(.escape) {
-            globalState.currentView = .blockedDomains
-            return .handled
         }
     }
 
@@ -323,7 +317,7 @@ struct AddBlockedDomainView: View {
                 domain: trimmedDomain,
                 reason: trimmedReason.isEmpty ? nil : trimmedReason
             )
-            globalState.currentView = .blockedDomains
+            pop()
         } catch {
             errorMessage = String(describing: error)
         }
