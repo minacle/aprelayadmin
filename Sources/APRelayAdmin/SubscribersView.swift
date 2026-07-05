@@ -2,11 +2,6 @@ import RetortTUI
 
 struct SubscribersView: View {
 
-    @Bindable
-    var globalState: GlobalState
-
-    // MARK: -
-
     enum FocusedItem: Hashable {
 
         case pending
@@ -15,6 +10,9 @@ struct SubscribersView: View {
 
         case rejected
     }
+
+    @Environment(GlobalState.self)
+    private var globalState
 
     @FocusState
     private var focusedItem: FocusedItem? = .pending

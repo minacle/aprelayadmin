@@ -3,11 +3,6 @@ import RetortTUI
 
 struct BlockedDomainsView: View {
 
-    @Bindable
-    var globalState: GlobalState
-
-    // MARK: -
-
     enum FocusedItem: Hashable {
 
         case blockedDomain(Int)
@@ -27,6 +22,9 @@ struct BlockedDomainsView: View {
 
     @Environment(\.push)
     private var push
+
+    @Environment(GlobalState.self)
+    private var globalState
 
     @FocusState
     private var focusedItem: FocusedItem?
@@ -155,7 +153,7 @@ struct BlockedDomainsView: View {
             (_) in
             if editingItem == nil {
                 push {
-                    AddBlockedDomainView(globalState: globalState)
+                    AddBlockedDomainView()
                 }
                 return .handled
             }
@@ -222,11 +220,6 @@ struct BlockedDomainsView: View {
 
 struct AddBlockedDomainView: View {
 
-    @Bindable
-    var globalState: GlobalState
-
-    // MARK: -
-
     enum FocusedItem: Hashable {
 
         case domain
@@ -238,6 +231,9 @@ struct AddBlockedDomainView: View {
 
     @Environment(\.pop)
     private var pop
+
+    @Environment(GlobalState.self)
+    private var globalState
 
     @FocusState
     private var focusedItem: FocusedItem? = .domain

@@ -2,11 +2,6 @@ import RetortTUI
 
 struct RootView: View {
 
-    @Bindable
-    var globalState: GlobalState
-
-    // MARK: -
-
     enum FocusedItem: Hashable {
 
         case subscribers
@@ -30,13 +25,13 @@ struct RootView: View {
             Group {
                 RetortList(selection: $focusedItem) {
                     RetortListItem(id: .subscribers, role: .navigationLink, title: "Subscribers") {
-                        SubscribersView(globalState: globalState)
+                        SubscribersView()
                     }
                     RetortListItem(id: .blockedDomains, role: .navigationLink, title: "Blocked Domains") {
-                        BlockedDomainsView(globalState: globalState)
+                        BlockedDomainsView()
                     }
                     RetortListItem(id: .settings, role: .navigationLink, title: "Settings") {
-                        SettingsView(globalState: globalState)
+                        SettingsView()
                     }
                 }
                 Spacer()

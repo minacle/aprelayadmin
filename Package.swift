@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "aprelayadmin",
     platforms: [
-        .macOS(.v26),
+        .macOS(.v15),
     ],
     products: [
         .executable(
@@ -14,7 +14,10 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../RetortTUI"),
+        .package(
+            url: "https://github.com/minacle/RetortTUI",
+            branch: "main"
+        ),
         .package(
             url: "https://github.com/swift-server/async-http-client.git",
             from: "1.34.0"

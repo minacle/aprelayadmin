@@ -1,5 +1,5 @@
 {
-  "originHash" : "772d10caf2b9bfc0874aee283df9bd150bb6e84c115ac8230217c2c14f765698",
+  "originHash" : "25086f19c321dd9f156bb9a188c792f80f97d4e9ec7a31891de35b153d8b35e6",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "4603a8036d921ea999fadb742931546c341f4bd7",
         "version" : "1.35.0"
+      }
+    },
+    {
+      "identity" : "retorttui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/minacle/RetortTUI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "6ae6d5ffb8f8093da53731c9568598806f538036"
       }
     },
     {
@@ -204,7 +213,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/minacle/swift-terminal",
       "state" : {
-        "branch" : "main",
         "revision" : "1f45bc5860f008543cd9a718fb1e66920ef9411d"
       }
     },
@@ -213,8 +221,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/minacle/swift-termios",
       "state" : {
-        "branch" : "main",
-        "revision" : "e21d00bd0d3640af26e0a849928e2e6e9d44ba74"
+        "revision" : "ea47a4863d918fb6acfc9ab285344a8185045d80",
+        "version" : "1.0.0"
       }
     },
     {
@@ -223,7 +231,7 @@
       "location" : "https://github.com/minacle/swift-tui",
       "state" : {
         "branch" : "main",
-        "revision" : "60faf6d500a6df0fa73951e3ffb0240659e923f9"
+        "revision" : "cfb09b32d1d486aa0b9d9a4b4c2936cd808b2d8f"
       }
     }
   ],

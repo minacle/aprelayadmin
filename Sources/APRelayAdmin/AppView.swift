@@ -6,14 +6,15 @@ struct AppView: View {
     @Environment(\.terminate)
     private var terminate
 
-    @Bindable
+    @State
     private var globalState = GlobalState()
 
     // MARK: View
 
     var body: some View {
         NavigationStack {
-            RootView(globalState: globalState)
+            RootView()
+            .environment(globalState)
             .onGlobalKeyPress(.escape) {
                 terminate()
                 return .handled

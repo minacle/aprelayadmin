@@ -2,17 +2,15 @@ import RetortTUI
 
 struct SettingsView: View {
 
-    @Bindable
-    var globalState: GlobalState
-
-    // MARK: -
-
     enum FocusedItem: Hashable {
 
         case adminToken
 
         case relayURL
     }
+
+    @Environment(GlobalState.self)
+    private var globalState
 
     @FocusState
     private var focusedItem: FocusedItem? = .adminToken
