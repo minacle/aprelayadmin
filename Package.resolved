@@ -1,5 +1,5 @@
 {
-  "originHash" : "25086f19c321dd9f156bb9a188c792f80f97d4e9ec7a31891de35b153d8b35e6",
+  "originHash" : "35f435bcacbac77a63998ab56fcdd5853142c898b50627a805ea144c84b59606",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -231,7 +231,7 @@
       "location" : "https://github.com/minacle/swift-tui",
       "state" : {
         "branch" : "main",
-        "revision" : "cfb09b32d1d486aa0b9d9a4b4c2936cd808b2d8f"
+        "revision" : "9f6e154be7767a330421d1392ec2c8c42fb6b3e2"
       }
     }
   ],
