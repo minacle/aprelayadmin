@@ -36,7 +36,7 @@ struct RootView: View {
                 }
                 Spacer()
             }
-            HStack(spacing: 2) {
+            RetortFlow(horizontalSpacing: 2) {
                 keyHint(for: "↑", "↓", description: "move")
                 keyHint(for: "↩", description: "select")
                 keyHint(for: "⎋", description: "quit")

@@ -35,7 +35,7 @@ struct SettingsView: View {
                 }
                 Spacer()
             }
-            HStack(spacing: 2) {
+            RetortFlow(horizontalSpacing: 2) {
                 if editingItem == nil {
                     keyHint(for: "↑", "↓", description: "move")
                     keyHint(for: "↩", description: "edit")

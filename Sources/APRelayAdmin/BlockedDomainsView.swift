@@ -20,9 +20,6 @@ struct BlockedDomainsView: View {
         }
     }
 
-    @Environment(\.push)
-    private var push
-
     @Environment(GlobalState.self)
     private var globalState
 
@@ -43,6 +40,9 @@ struct BlockedDomainsView: View {
 
     @State
     private var editingItemHint: String = ""
+
+    @State
+    private var isAddBlockedDomainViewPresented: Bool = false
 
     func refresh() {
         isRefreshing = true
@@ -118,7 +118,7 @@ struct BlockedDomainsView: View {
                 }
                 Spacer()
             }
-            HStack(spacing: 2) {
+            RetortFlow(horizontalSpacing: 2) {
                 if isRefreshing {
                     keyHint(for: "⎋", description: "back")
                 }
@@ -146,15 +146,16 @@ struct BlockedDomainsView: View {
                 Spacer()
             }
         }
+        .navigationDestination(isPresented: $isAddBlockedDomainViewPresented) {
+            AddBlockedDomainView()
+        }
         .onAppear {
             refresh()
         }
         .onGlobalKeyPress(characters: .init(charactersIn: "a")) {
             (_) in
             if editingItem == nil {
-                push {
-                    AddBlockedDomainView()
-                }
+                isAddBlockedDomainViewPresented = true
                 return .handled
             }
             return .ignored
@@ -229,8 +230,8 @@ struct AddBlockedDomainView: View {
         case block
     }
 
-    @Environment(\.pop)
-    private var pop
+    @Environment(\.dismiss)
+    private var dismiss
 
     @Environment(GlobalState.self)
     private var globalState
@@ -280,7 +281,7 @@ struct AddBlockedDomainView: View {
                 }
                 Spacer()
             }
-            HStack(spacing: 2) {
+            RetortFlow(horizontalSpacing: 2) {
                 if editingItem == nil {
                     keyHint(for: "↑", "↓", description: "move")
                     keyHint(for: "↩", description: focusedItem != .block ? "edit" : "block")
@@ -313,7 +314,7 @@ struct AddBlockedDomainView: View {
                 domain: trimmedDomain,
                 reason: trimmedReason.isEmpty ? nil : trimmedReason
             )
-            pop()
+            dismiss()
         } catch {
             errorMessage = String(describing: error)
         }
@@ -339,7 +340,7 @@ struct AddBlockedDomainView: View {
             }
         return
             Text("●")
-            .color(color)
+            .foregroundStyle(color)
     }
 
     private func message(_ text: String) -> some View {

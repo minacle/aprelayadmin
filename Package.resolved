@@ -16,7 +16,7 @@
       "location" : "https://github.com/minacle/RetortTUI",
       "state" : {
         "branch" : "main",
-        "revision" : "6ae6d5ffb8f8093da53731c9568598806f538036"
+        "revision" : "209c0c7a564eb5d17be4afe7033aab600efdedf1"
       }
     },
     {
@@ -213,7 +213,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/minacle/swift-terminal",
       "state" : {
-        "revision" : "1f45bc5860f008543cd9a718fb1e66920ef9411d"
+        "revision" : "8579d2df55c8e1b34d07a0c3b0689732ae24f2ea"
       }
     },
     {
@@ -223,15 +223,6 @@
       "state" : {
         "revision" : "ea47a4863d918fb6acfc9ab285344a8185045d80",
         "version" : "1.0.0"
-      }
-    },
-    {
-      "identity" : "swift-tui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/minacle/swift-tui",
-      "state" : {
-        "branch" : "main",
-        "revision" : "9f6e154be7767a330421d1392ec2c8c42fb6b3e2"
       }
     }
   ],

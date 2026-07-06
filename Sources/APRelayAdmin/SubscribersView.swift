@@ -41,7 +41,7 @@ struct SubscribersView: View {
                 }
                 Spacer()
             }
-            HStack(spacing: 2) {
+            RetortFlow(horizontalSpacing: 2) {
                 keyHint(for: "↑", "↓", description: "move")
                 keyHint(for: "↩", description: "select")
                 keyHint(for: "⎋", description: "back")
@@ -232,7 +232,7 @@ private struct SubscriberListView: View {
                 }
                 Spacer()
             }
-            HStack(spacing: 2) {
+            RetortFlow(horizontalSpacing: 2) {
                 if isRefreshing {
                     keyHint(for: "⎋", description: "back")
                 }
